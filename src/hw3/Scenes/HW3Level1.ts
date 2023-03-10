@@ -27,6 +27,9 @@ export default class Level1 extends HW3Level {
     public static readonly JUMP_AUDIO_KEY = "PLAYER_JUMP";
     public static readonly JUMP_AUDIO_PATH = "hw4_assets/sounds/jump.wav";
 
+    public static readonly DYING_AUDIO_KEY = "PLAYER_DYING";
+    public static readonly DYING_AUDIO_PATH = "hw4_assets/sounds/dying.wav";
+
     public static readonly TILE_DESTROYED_KEY = "TILE_DESTROYED";
     public static readonly TILE_DESTROYED_PATH = "hw4_assets/sounds/switch.wav";
 
@@ -47,8 +50,9 @@ export default class Level1 extends HW3Level {
         this.playerSpawn = Level1.PLAYER_SPAWN;
 
         // Music and sound
-        this.levelMusicKey = Level1.LEVEL_MUSIC_KEY
+        this.levelMusicKey = Level1.LEVEL_MUSIC_KEY;
         this.jumpAudioKey = Level1.JUMP_AUDIO_KEY;
+        this.dyingAudioKey = Level1.DYING_AUDIO_KEY;
         this.tileDestroyedAudioKey = Level1.TILE_DESTROYED_KEY;
 
         // Level end size and position
@@ -67,6 +71,7 @@ export default class Level1 extends HW3Level {
         // Audio and music
         this.load.audio(this.levelMusicKey, Level1.LEVEL_MUSIC_PATH);
         this.load.audio(this.jumpAudioKey, Level1.JUMP_AUDIO_PATH);
+        this.load.audio(this.dyingAudioKey, Level1.DYING_AUDIO_PATH);
         this.load.audio(this.tileDestroyedAudioKey, Level1.TILE_DESTROYED_PATH);
     }
 

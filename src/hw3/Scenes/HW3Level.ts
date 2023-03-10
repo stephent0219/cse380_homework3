@@ -90,6 +90,7 @@ export default abstract class HW3Level extends Scene {
     /** Sound and music */
     protected levelMusicKey: string;
     protected jumpAudioKey: string;
+    protected dyingAudioKey: string;
     protected tileDestroyedAudioKey: string;
 
     public constructor(viewport: Viewport, sceneManager: SceneManager, renderingManager: RenderingManager, options: Record<string, any>) {
@@ -469,5 +470,9 @@ export default abstract class HW3Level extends Scene {
     // Get the key of the player's jump audio file
     public getJumpAudioKey(): string {
         return this.jumpAudioKey
+    }
+
+    public getDyingAudioKey(): string {
+        return this.dyingAudioKey
     }
 }
