@@ -1,10 +1,10 @@
 {
     "name": "Hero",
     "spriteSheetImage": "Hero.png",
-    "spriteWidth": 16,
-    "spriteHeight": 16,
-    "columns": 2,
-    "rows": 2,
+    "spriteWidth": 256,
+    "spriteHeight": 256,
+    "columns": 8,
+    "rows": 9,
     "durationType": "time",
     "animations": [
         { 
