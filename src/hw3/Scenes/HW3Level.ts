@@ -433,6 +433,19 @@ export default abstract class HW3Level extends Scene {
             onEnd: HW3Events.PLAYER_DEAD
         });
 
+        this.player.tweens.add(PlayerTweens.FLIP, {
+            startDelay: 0,
+            duration: 500,
+            effects: [
+                {
+                    property: "rotation",
+                    start: Math.PI*2,
+                    end: 0,
+                    ease: EaseFunctionType.IN_OUT_QUAD
+                }
+            ],
+        });
+
         // Give the player it's AI
         this.player.addAI(PlayerController, { 
             weaponSystem: this.playerWeaponSystem, 
