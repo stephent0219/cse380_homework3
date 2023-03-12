@@ -299,6 +299,10 @@ export default abstract class HW3Level extends Scene {
         this.walls.addPhysics();
         // Add physics to the destructible layer of the tilemap
         this.destructable.addPhysics();
+
+        // 6.3
+        this.walls.setGroup(HW3PhysicsGroups.GROUND);
+        this.destructable.setGroup(HW3PhysicsGroups.DESTRUCTABLE);
     }
     /**
      * Handles all subscriptions to events
@@ -396,6 +400,10 @@ export default abstract class HW3Level extends Scene {
     protected initializeWeaponSystem(): void {
         this.playerWeaponSystem = new PlayerWeapon(50, Vec2.ZERO, 1000, 3, 0, 50);
         this.playerWeaponSystem.initializePool(this, HW3Layers.PRIMARY);
+        // 6.3
+        for(let element of this.playerWeaponSystem.getPool()) {
+            element.setGroup(HW3PhysicsGroups.PLAYER_WEAPON);
+        }
     }
     /**
      * Initializes the player, setting the player's initial position to the given position.
@@ -416,7 +424,8 @@ export default abstract class HW3Level extends Scene {
         
         // Give the player physics
         this.player.addPhysics(new AABB(this.player.position.clone(), this.player.boundary.getHalfSize().clone()));
-
+        // 6.3
+        this.player.setGroup(HW3PhysicsGroups.PLAYER);
         // TODO - give the player their flip tween
 
         // Give the player a death animation
