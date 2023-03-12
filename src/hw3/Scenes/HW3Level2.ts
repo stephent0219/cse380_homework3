@@ -78,6 +78,10 @@ export default class Level2 extends HW3Level {
     }
 
     public unloadScene(): void {
+        this.load.keepSpritesheet(this.playerSpriteKey);
+        this.load.keepAudio(this.jumpAudioKey);
+        this.load.keepAudio(this.dyingAudioKey);
+        this.load.keepAudio(this.tileDestroyedAudioKey);
         this.emitter.fireEvent(GameEventType.STOP_SOUND, {key: this.levelMusicKey});
     }
 

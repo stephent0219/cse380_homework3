@@ -71,6 +71,7 @@ export default class Level1 extends HW3Level {
         this.load.spritesheet(this.playerSpriteKey, Level1.PLAYER_SPRITE_PATH);
         // Audio and music
         this.load.audio(this.levelMusicKey, Level1.LEVEL_MUSIC_PATH);
+
         this.load.audio(this.jumpAudioKey, Level1.JUMP_AUDIO_PATH);
         this.load.audio(this.dyingAudioKey, Level1.DYING_AUDIO_PATH);
         this.load.audio(this.tileDestroyedAudioKey, Level1.TILE_DESTROYED_PATH);
@@ -80,6 +81,10 @@ export default class Level1 extends HW3Level {
      * Unload resources for level 1
      */
     public unloadScene(): void {
+        this.load.keepSpritesheet(this.playerSpriteKey);
+        this.load.keepAudio(this.jumpAudioKey);
+        this.load.keepAudio(this.dyingAudioKey);
+        this.load.keepAudio(this.tileDestroyedAudioKey);
         this.emitter.fireEvent(GameEventType.STOP_SOUND, {key: this.levelMusicKey});
     }
 
