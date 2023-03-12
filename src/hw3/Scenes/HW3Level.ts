@@ -183,6 +183,10 @@ export default abstract class HW3Level extends Scene {
                 this.sceneManager.changeToScene(MainMenu);
                 break;
             }
+            case HW3Events.DESTROY:{
+                this.handleParticleHit(event.data.get("node"));
+                break;
+            }
             // Default: Throw an error! No unhandled events allowed.
             default: {
                 throw new Error(`Unhandled event caught in scene with type ${event.type}`)
@@ -217,7 +221,7 @@ export default abstract class HW3Level extends Scene {
                     // If the tile is collideable -> check if this particle is colliding with the tile
                     if(tilemap.isTileCollidable(col, row) && this.particleHitTile(tilemap, particle, col, row)){
                         this.emitter.fireEvent(GameEventType.PLAY_SOUND, { key: this.tileDestroyedAudioKey, loop: false, holdReference: false });
-                        // TODO Destroy the tile
+                        tilemap.setTileAtRowCol(new Vec2(col,row), 0);
                     }
                 }
             }
@@ -235,7 +239,7 @@ export default abstract class HW3Level extends Scene {
      */
     protected particleHitTile(tilemap: OrthogonalTilemap, particle: Particle, col: number, row: number): boolean {
         // TODO detect whether a particle hit a tile
-        return;
+        return true;
     }
 
     /**
@@ -303,6 +307,8 @@ export default abstract class HW3Level extends Scene {
         // 6.3
         this.walls.setGroup(HW3PhysicsGroups.GROUND);
         this.destructable.setGroup(HW3PhysicsGroups.DESTRUCTABLE);
+
+        this.destructable.setTrigger(HW3PhysicsGroups.PLAYER_WEAPON, HW3Events.DESTROY, null);
     }
     /**
      * Handles all subscriptions to events
@@ -313,6 +319,7 @@ export default abstract class HW3Level extends Scene {
         this.receiver.subscribe(HW3Events.LEVEL_END);
         this.receiver.subscribe(HW3Events.HEALTH_CHANGE);
         this.receiver.subscribe(HW3Events.PLAYER_DEAD);
+        this.receiver.subscribe(HW3Events.DESTROY);
     }
     /**
      * Adds in any necessary UI to the game
