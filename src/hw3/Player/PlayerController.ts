@@ -121,7 +121,11 @@ export default class PlayerController extends StateMachineAI {
         // If the player hits the attack button and the weapon system isn't running, restart the system and fire!
         if (Input.isPressed(HW3Controls.ATTACK) && !this.weapon.isSystemRunning()) {
             // Start the particle system at the player's current position
-            this.owner.animation.play(PlayerAnimations.ATTACTING_RIGHT);
+            if(this.faceDir.x >= 0){
+                this.owner.animation.play(PlayerAnimations.ATTACTING_RIGHT);
+            }else if(this.faceDir.x < 0){
+                this.owner.animation.play(PlayerAnimations.ATTACTING_LEFT);
+            }
             this.weapon.startSystem(500, 0, this.owner.position);
         }
 
