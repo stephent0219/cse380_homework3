@@ -95,7 +95,14 @@ export default abstract class HW3Level extends Scene {
 
     public constructor(viewport: Viewport, sceneManager: SceneManager, renderingManager: RenderingManager, options: Record<string, any>) {
         super(viewport, sceneManager, renderingManager, {...options, physics: {
-            // TODO configure the collision groups and collision map
+            groupNames: [HW3PhysicsGroups.PLAYER,
+                         HW3PhysicsGroups.PLAYER_WEAPON, 
+                         HW3PhysicsGroups.GROUND, 
+                         HW3PhysicsGroups.DESTRUCTABLE],
+            collisions: [[1,0,0,1], 
+                         [1,0,0,1], 
+                         [0,1,1,0],
+                         [0,1,1,0]]
          }});
         this.add = new HW3FactoryManager(this, this.tilemaps);
     }
