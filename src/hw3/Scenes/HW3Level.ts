@@ -246,6 +246,7 @@ export default abstract class HW3Level extends Scene {
         if (!this.levelEndTimer.hasRun() && this.levelEndTimer.isStopped()) {
             this.levelEndTimer.start();
             this.levelEndLabel.tweens.play("slideIn");
+            this.emitter.fireEvent(GameEventType.STOP_SOUND, {key: this.levelMusicKey});
         }
     }
     /**

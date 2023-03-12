@@ -22,8 +22,8 @@ export default class Level2 extends HW3Level {
     public static readonly DESTRUCTIBLE_LAYER_KEY = "Destructable";
     public static readonly WALLS_LAYER_KEY = "Main";
 
-    public static readonly LEVEL_MUSIC_KEY = "LEVEL_MUSIC";
-    public static readonly LEVEL_MUSIC_PATH = "hw4_assets/music/hw5_level_music.wav";
+    public static readonly LEVEL2_MUSIC_KEY = "LEVEL2_MUSIC";
+    public static readonly LEVEL2_MUSIC_PATH = "hw4_assets/sounds/level2.wav";
 
     public static readonly JUMP_AUDIO_KEY = "PLAYER_JUMP";
     public static readonly JUMP_AUDIO_PATH = "hw4_assets/sounds/jump.wav";
@@ -51,7 +51,7 @@ export default class Level2 extends HW3Level {
         this.playerSpawn = Level2.PLAYER_SPAWN;
 
         // Music and sound
-        this.levelMusicKey = Level2.LEVEL_MUSIC_KEY
+        this.levelMusicKey = Level2.LEVEL2_MUSIC_KEY;
         this.jumpAudioKey = Level2.JUMP_AUDIO_KEY;
         this.dyingAudioKey = Level2.DYING_AUDIO_KEY;
         this.tileDestroyedAudioKey = Level2.TILE_DESTROYED_KEY;
@@ -70,7 +70,7 @@ export default class Level2 extends HW3Level {
         // Load in the player's sprite
         this.load.spritesheet(this.playerSpriteKey, Level2.PLAYER_SPRITE_PATH);
         // Audio and music
-        this.load.audio(this.levelMusicKey, Level2.LEVEL_MUSIC_PATH);
+        this.load.audio(this.levelMusicKey, Level2.LEVEL2_MUSIC_PATH);
         this.load.audio(this.jumpAudioKey, Level2.JUMP_AUDIO_PATH);
         this.load.audio(this.dyingAudioKey, Level2.DYING_AUDIO_PATH);
         this.load.audio(this.tileDestroyedAudioKey, Level2.TILE_DESTROYED_PATH);
