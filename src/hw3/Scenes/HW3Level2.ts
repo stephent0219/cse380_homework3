@@ -2,6 +2,7 @@ import AABB from "../../Wolfie2D/DataTypes/Shapes/AABB";
 import Vec2 from "../../Wolfie2D/DataTypes/Vec2";
 import HW3Level from "./HW3Level";
 import MainMenu from "./MainMenu";
+import { GameEventType } from "../../Wolfie2D/Events/GameEventType";
 
 import Viewport from "../../Wolfie2D/SceneGraph/Viewport";
 import RenderingManager from "../../Wolfie2D/Rendering/RenderingManager";
@@ -77,7 +78,7 @@ export default class Level2 extends HW3Level {
     }
 
     public unloadScene(): void {
-        // TODO decide which resources to keep/cull 
+        this.emitter.fireEvent(GameEventType.STOP_SOUND, {key: this.levelMusicKey});
     }
 
     public startScene(): void {

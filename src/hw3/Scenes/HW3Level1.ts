@@ -5,6 +5,7 @@ import RenderingManager from "../../Wolfie2D/Rendering/RenderingManager";
 import SceneManager from "../../Wolfie2D/Scene/SceneManager";
 import Viewport from "../../Wolfie2D/SceneGraph/Viewport";
 import HW4Level2 from "./HW3Level2";
+import { GameEventType } from "../../Wolfie2D/Events/GameEventType";
 
 /**
  * The first level for HW4 - should be the one with the grass and the clouds.
@@ -79,7 +80,7 @@ export default class Level1 extends HW3Level {
      * Unload resources for level 1
      */
     public unloadScene(): void {
-        // TODO decide which resources to keep/cull 
+        this.emitter.fireEvent(GameEventType.STOP_SOUND, {key: this.levelMusicKey});
     }
 
     public startScene(): void {
